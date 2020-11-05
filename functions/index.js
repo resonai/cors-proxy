@@ -47,6 +47,7 @@ exports.cors = functions.https.onRequest((req, res) => {
       body: req.get('content-type') === 'application/json' ? JSON.stringify(req.body) : req.body,
       headers: {
         'Content-Type': req.get('Content-Type'),
+        'Authorization': req.get('Authorization'),
       },
     })
     .then(r => r.headers.get('content-type') === 'application/json' ? r.json() : r.text())
